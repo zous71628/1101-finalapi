@@ -34,7 +34,7 @@ const Posts = class Posts {
   static async update(body) {
     const { id, title, content,image,date } = body;
     const query = {
-      text: `UPDATE users SET title = $2, content = $3,image = $4, date = $5 WHERE id = $1;`,
+      text: `UPDATE posts SET title = $2, content = $3,image = $4, date = $5 WHERE id = $1;`,
       values: [id, title, content,image,date],
     };
     return db.query(query);
@@ -44,7 +44,7 @@ const Posts = class Posts {
   static async delete(id) {
     console.log(id);
     const query = {
-      text: `DELETE FROM users WHERE id = $1`,
+      text: `DELETE FROM posts WHERE id = $1`,
       values: [id],
     };
     return db.query(query);
