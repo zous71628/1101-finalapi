@@ -1,4 +1,3 @@
-const router = require('../routes/users');
 const userService = require('../services/userService');
 
 //CREATE
