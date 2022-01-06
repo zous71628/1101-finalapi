@@ -15,7 +15,7 @@ const Posts = class Posts {
     const { id,title, content,image} = body;
     const date = new Date().toString();
     const query = {
-      text: `INSERT INTO posts (id,title, content,image,date) VALUES ($1,$2,$3,$4)`,
+      text: `INSERT INTO posts (id,title, content,image,date) VALUES ($1,$2,$3,$4,$5)`,
       values: [id,title, content,image,date],
     };
     return db.query(query);
