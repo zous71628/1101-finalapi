@@ -23,13 +23,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/',cors(), indexRouter);
 app.use('/users', cors(),usersRouter);
-app.use('/posts', cors(),postsRouter);
+app.use('/posts', postsRouter);
 
-app.use(
-  cors({
-    origin: ['https://final-dbapi-1101.herokuapp.com/']
-  })
-);
+// app.use(
+//   cors({
+//     origin: ['https://final-dbapi-1101.herokuapp.com/']
+//   })
+// );
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

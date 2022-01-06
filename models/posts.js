@@ -12,10 +12,11 @@ const Posts = class Posts {
   }
   //CREATE
   static async create(body) {
-    const { id, title, content,image,date } = body;
+    const { title, content,image} = body;
+    const date = new Date().toString();
     const query = {
-      text: `INSERT INTO posts (id, title, content,image,date) VALUES ($1,$2,$3,$4,$5)`,
-      values: [id, title, content,image,date],
+      text: `INSERT INTO posts (title, content,image,date) VALUES ($1,$2,$3,$4)`,
+      values: [title, content,image,date],
     };
     return db.query(query);
   }
@@ -32,7 +33,8 @@ const Posts = class Posts {
 
   //UPDATE
   static async update(body) {
-    const { id, title, content,image,date } = body;
+    const { id, title, content,image } = body;
+    const date = new Date().toString();
     const query = {
       text: `UPDATE posts SET title = $2, content = $3,image = $4, date = $5 WHERE id = $1;`,
       values: [id, title, content,image,date],
