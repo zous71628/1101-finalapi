@@ -12,8 +12,8 @@ const Posts = class Posts {
   }
   //CREATE
   static async create(body) {
-    const { title, content,image} = body;
-    const date = new Date().toString();
+    const { title, content,image,date} = body;
+    // const date = new Date().toString();
     const query = {
       text: `INSERT INTO posts (title, content,image,date) VALUES ($1,$2,$3,$4)`,
       values: [title, content,image,date],
