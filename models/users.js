@@ -17,10 +17,10 @@ const Users = class Users {
     return db.query(query);
   }
 
-  // READ 
+  // READ
   static async read() {
     try {
-      const results = await db.query(`SELECT * FROM users`);
+      const results = await db.query(`SELECT * FROM users ORDER BY id ASC`);
       return results.rows;
     } catch (e) {
       console.log('error', e);
@@ -45,6 +45,19 @@ const Users = class Users {
       values: [id],
     };
     return db.query(query);
+  }
+
+  // LOGIN
+  static async login(account) {
+    try {
+      const query = {
+        text: `SELECT * FROM users WHERE account=$1;`,
+        values: [account],
+      };
+      return db.query(query);
+    } catch (error) {
+      console.log('error', error);
+    }
   }
 };
 
