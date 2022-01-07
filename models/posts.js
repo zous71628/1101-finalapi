@@ -24,7 +24,7 @@ const Posts = class Posts {
   // READ 
   static async read() {
     try {
-      const results = await db.query(`SELECT * FROM posts`);
+      const results = await db.query(`SELECT * FROM posts ORDER BY id ASC`);
       return results.rows;
     } catch (e) {
       console.log('error', e);
