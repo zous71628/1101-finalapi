@@ -13,7 +13,7 @@ const Posts = class Posts {
   //CREATE
   static async create(body) {
     const { title, content,image} = body;
-    const date = new Date();
+    const date = new Date().toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'});;
     const query = {
       text: `INSERT INTO posts (title, content,image,date) VALUES ($1,$2,$3,$4)`,
       values: [title, content,image,date],
