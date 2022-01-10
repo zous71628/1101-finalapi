@@ -48,13 +48,32 @@ const Users = class Users {
   }
 
   // LOGIN
-  static async login(account) {
+  static async login(account, password) {
     try {
       const query = {
-        text: `SELECT * FROM users WHERE account=$1;`,
+        text: `SELECT * FROM users WHERE account = $1;`,
         values: [account],
       };
-      return db.query(query);
+      let data = await db.query(query);
+      console.log(data.rows);
+      if(data.rows.length<=0){
+        return {
+          resultCode:4224,
+          msg:"Account Not Existed"
+        }
+      }
+      
+      if(data.rows[0].password == password){
+        return {
+          id:data.rows[0].id,
+          account:data.rows[0].account,
+        }
+      }else{
+        return {
+          resultCode:4225,
+          msg:"Password Not Correct"
+        }
+      }
     } catch (error) {
       console.log('error', error);
     }
