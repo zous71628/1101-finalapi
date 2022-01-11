@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', cors(),usersRouter);
 app.use('/posts', cors(),postsRouter);
-app.use('/login', loginRouter);
+app.use('/login', cors(),loginRouter);
 
 app.use(
   cors({
