@@ -9,10 +9,10 @@ const Users = class Users {
   }
   //CREATE
   static async create(body) {
-    const { id, account, password } = body;
+    const { account, password } = body;
     const query = {
-      text: `INSERT INTO users (id, account, password) VALUES ($1,$2,$3)`,
-      values: [id, account, password],
+      text: `INSERT INTO users (account, password) VALUES ($1,$2)`,
+      values: [account, password],
     };
     return db.query(query);
   }
